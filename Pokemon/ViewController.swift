@@ -55,13 +55,33 @@ class ViewController: UIViewController {
         //Building our complete request url with name/id
         let requestURL = pokemonIndedx + pokemonIDURLComponent + "/"
         
-        Alamofire.request(requestURL).responseJSON {(response ) in
+        //Printing info into view
+        Alamofire.request(requestURL).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.pokemonDetailsTV.text = json["pokemon"].stringValue
-            case .failure(let error) :
-                self.pokemonDetailsTV.text = "Invalid selection entered or an error occured please try again"
+                self.pokemonDetailsTV.text = json.rawString()
+                //All the variables that will store information about the pokemon
+                var pokeId = json["id"].stringValue
+                var pokeNames = json["name"].stringValue
+                //Preparing format for organized info
+                let format = """
+                Name: \(pokeNames.self)
+                
+                Id: \(pokeId.self)
+                Stats:
+                Type:
+                Species:
+                Forms:
+                Height:
+                Weight:
+                Location:
+                Moves:
+                Abilities:
+                """
+            //self.infoView.text = format
+            case .failure(let error):
+                self.pokemonDetailsTV.text = "Invalid selection entered or an error occured. Try again."
                 print(error.localizedDescription)
             }
         }
