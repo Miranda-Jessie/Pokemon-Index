@@ -43,10 +43,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbz-s8-0SK">
-                                <rect key="frame" x="67" y="174" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -66,7 +62,6 @@
                     <connections>
                         <outlet property="pokemonDetailsTV" destination="Obm-lh-keA" id="4GV-D0-A7e"/>
                         <outlet property="pokemonIDTF" destination="tbf-MT-mG0" id="ID5-JU-zdb"/>
-                        <outlet property="pokemonImage" destination="lbz-s8-0SK" id="gky-ss-ZBa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

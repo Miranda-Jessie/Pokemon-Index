@@ -19,8 +19,7 @@ class ViewController: UIViewController {
     //Make Outlets for the StoryBoard
     @IBOutlet weak var pokemonIDTF: UITextField!
     @IBOutlet weak var pokemonDetailsTV: UITextView!
-    @IBOutlet weak var pokemonImage: UIImageView!
-    
+
     //Base URL for request:
     let pokemonIndedx = "https://pokeapi.co/api/v2/pokemon/"
     
@@ -51,18 +50,18 @@ class ViewController: UIViewController {
         pokemonIDTF.text = ""
         
         //Replacing spaces in ID with + so they can be used as part of the URL
-        let pokemonIDURLComponent = pokemonID.replacingOccurrences(of: " ", with: "-")
+        let pokemonIDURLComponent = pokemonID.replacingOccurrences(of: " ", with: "+")
         
         //Building our complete request url with name/id
         let requestURL = pokemonIndedx + pokemonIDURLComponent + "/"
         
-        Alamofire.request(requestURL).responseJSON { (response) in
+        Alamofire.request(requestURL).responseJSON {(response ) in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.pokemonDetailsTV.text = json["details"].stringValue
+                self.pokemonDetailsTV.text = json["pokemon"].stringValue
             case .failure(let error) :
-                self.pokemonDetailsTV.text = "Invalid selection or an error occured. Please try again."
+                self.pokemonDetailsTV.text = "Invalid selection entered or an error occured please try again"
                 print(error.localizedDescription)
             }
         }
